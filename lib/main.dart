@@ -5,10 +5,102 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: myHomePage(context),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+Widget myHomePage(BuildContext context) {
+  return Scaffold(
+    body: Container(
+      child: Center(
+        child: Container(
+          width: 400,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('images/img_splash_header.jpeg'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    text: "PENDAFTARAN PESERTA BARU",
+                    icon: "icons/icon_new_member.jpeg",
+                    click: (){
+                      print("Click PENDAFTARAN PESERTA BARU");
+                    },
+                  ),
+                  CustomButton(
+                    text: "PENDAFTARAN PENGGUNA BARU",
+                    icon: "icons/icon_new_user.jpeg",
+                    click: (){
+                      print("Click PENDAFTARAN PENGGUNA BARU");
+                    },
+                  ),
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: Text("LOGIN"),
+                  onPressed: () {
+                    print("Clicked LOGIN");
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+class CustomButton extends StatelessWidget {
+  final String text, icon;
+  final double size = 130;
+  final Function()? click;
+  CustomButton({
+    this.text = "",
+    this.icon = "",
+    this.click,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Flexible(
+      child: Container(
+        margin: EdgeInsets.all(15),
+        width: size,
+        child: Column(
+          children: [
+            InkWell(
+              onTap: click,
+              splashColor: Colors.brown.withOpacity(0.5),
+              child: Ink(
+                height: size,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(icon),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,4 +1,7 @@
+import 'package:bpjs/login.dart';
 import 'package:flutter/material.dart';
+
+import 'comingsoon.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +29,8 @@ class HomePage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Container(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Center(
           child: Container(
             width: 400,
@@ -59,7 +63,8 @@ class HomePage extends StatelessWidget {
                   child: ElevatedButton(
                     child: Text("LOGIN"),
                     onPressed: () {
-                      print("Clicked LOGIN");
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                   ),
                 ),
@@ -109,24 +114,6 @@ class CustomButton extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ComingSoonPage extends StatelessWidget {
-  const ComingSoonPage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Center(child: Text("Coming Soon...")),
-      ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

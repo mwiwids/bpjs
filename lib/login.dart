@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:bpjs/layanan.dart';
+import 'package:bpjs/home.dart';
 import 'package:flutter/material.dart';
 import 'comingsoon.dart';
 
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                LayananPage(),
+                                HomePage(),
                           ),
                         );
                       },

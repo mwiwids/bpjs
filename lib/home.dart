@@ -18,7 +18,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> listScreen = [
     layananScreen(),
-    Text("Screen 2", style: TextStyle(fontSize: 30)),
+    notifikasiScreen(),
     Text("Screen 3", style: TextStyle(fontSize: 30)),
     Text("Screen 4", style: TextStyle(fontSize: 30)),
     Text("Screen 5", style: TextStyle(fontSize: 30)),
@@ -36,10 +36,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: listScreen.elementAt(currentScreen),
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home_repair_service), label: 'Layanan'),
-          BottomNavigationBarItem(icon: Icon(Icons.add_alert_sharp), label: 'Notifikasi'),
-          BottomNavigationBarItem(icon: Icon(Icons.announcement), label: 'Berita'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_box_outlined), label: 'Kontak'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_repair_service), label: 'Layanan'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_alert_sharp), label: 'Notifikasi'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.announcement), label: 'Berita'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_box_outlined), label: 'Kontak'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
         ],
         currentIndex: this.currentScreen,
@@ -47,7 +51,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         unselectedItemColor: Colors.black45,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-
         onTap: (int index) {
           setState(() {
             this.currentScreen = index;
@@ -56,6 +59,29 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
     );
   }
+}
+
+Widget notifikasiScreen() {
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            Icons.assignment_turned_in_outlined,
+            size: 50,
+            color: Colors.black45,
+          ),
+        ),
+        Text(
+          "Belum Ada Notifikasi",
+          style: TextStyle(color: Colors.black45),
+        )
+      ],
+    ),
+  );
 }
 
 Widget layananScreen() {

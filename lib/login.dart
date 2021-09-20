@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bpjs/layanan.dart';
 import 'package:flutter/material.dart';
 import 'comingsoon.dart';
 
@@ -72,7 +73,7 @@ class LoginPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                ComingSoonPage(title: "Login"),
+                                LayananPage(),
                           ),
                         );
                       },
@@ -83,7 +84,7 @@ class LoginPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomButton(
+                        CustomInkWell(
                           text: "Lupa Kata Sandi",
                           click: () {
                             Navigator.push(
@@ -95,7 +96,7 @@ class LoginPage extends StatelessWidget {
                             );
                           },
                         ),
-                        CustomButton(
+                        CustomInkWell(
                           text: "Daftar Akun",
                           click: () {
                             Navigator.pop(context, false);
@@ -114,10 +115,10 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class CustomButton extends StatelessWidget {
+class CustomInkWell extends StatelessWidget {
   final String text;
   final Function()? click;
-  const CustomButton({this.text = "", this.click});
+  const CustomInkWell({this.text = "", this.click});
 
   @override
   Widget build(BuildContext context) {

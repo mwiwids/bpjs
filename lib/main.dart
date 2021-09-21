@@ -32,7 +32,7 @@ class RegistrationPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            width: 400,
+            width: 411,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

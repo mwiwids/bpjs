@@ -19,9 +19,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> listScreen = [
     layananScreen(),
     notifikasiScreen(),
-    Text("Screen 3", style: TextStyle(fontSize: 30)),
-    Text("Screen 4", style: TextStyle(fontSize: 30)),
-    Text("Screen 5", style: TextStyle(fontSize: 30)),
+    Text("Berita", style: TextStyle(fontSize: 30)),
+    kontakScreen(),
+    Text("Profil", style: TextStyle(fontSize: 30)),
+  ];
+
+  List<String> listTitle = [
+    "BPJSTKU",
+    "Notifikasi",
+    "Berita",
+    "Kontak",
+    "Akun Saya",
   ];
 
   int currentScreen = 0;
@@ -30,7 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BPJSTKU"),
+        title: Text(listTitle.elementAt(currentScreen)),
         centerTitle: true,
       ),
       body: listScreen.elementAt(currentScreen),
@@ -61,6 +69,66 @@ class _BottomNavBarState extends State<BottomNavBar> {
   }
 }
 
+Widget kontakScreen() {
+  return SingleChildScrollView(
+    child: Center(
+      child: Container(
+        width: 411,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                "Layanan Masyarakat",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Image.asset(
+                "images/img_ask_bpjs.PNG",
+                width: 100,
+                height: 100,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "icons/icon_whatsapp.PNG",
+                  width: 32,
+                  height: 32,
+                ),
+                Text("Whatsapp"),
+              ],
+            ),
+            Text("+62 811-9115910"),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text("+62 855-9551950"),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+              child: Text(
+                  "Layanan Whatsapp hanya untuk Pekerja Migran Indonesia di Luar Negeri",
+                style: TextStyle(color: Colors.green),textAlign: TextAlign.center,),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+              child: Text(
+                  "Layanan Masyarakat BPJS Ketenagakerjaan melayani Anda mulai pukul 06:00 hingga pukul 22:00 WIB", textAlign: TextAlign.center,),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+              child: Image.asset("images/img_customer_care.PNG"),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
 Widget notifikasiScreen() {
   return Center(
     child: Column(
@@ -89,7 +157,7 @@ Widget layananScreen() {
   return SingleChildScrollView(
     child: Center(
       child: Container(
-        width: 400,
+        width: 411,
         child: Column(
           children: [
             Container(

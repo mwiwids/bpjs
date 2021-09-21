@@ -29,12 +29,10 @@ class RegistrationPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Center(
+      body: Center(
           child: Container(
             width: 411,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: ListView(
               children: [
                 Image.asset('images/img_splash_header.jpeg'),
                 Row(
@@ -71,7 +69,6 @@ class RegistrationPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

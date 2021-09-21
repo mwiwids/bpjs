@@ -6,17 +6,16 @@ import 'comingsoon.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const double marginHorizontal = 35;
+    const double margins = 35;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Center(
+        body:
+          Center(
             child: Container(
-              width: 400,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              width: 411,
+              child: ListView(
                 children: [
                   Stack(
                     clipBehavior: Clip.none,
@@ -38,16 +37,18 @@ class LoginPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 5),
-                    child: Text(
-                      "Masuk ke Akun Saya",
-                      style: TextStyle(fontSize: 16),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 5),
+                      child: Text(
+                        "Masuk ke Akun Saya",
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: marginHorizontal),
+                        horizontal: margins),
                     child: TextFormField(
                       decoration: InputDecoration(
                         hintText: "Nama Pengguna",
@@ -56,7 +57,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: marginHorizontal),
+                        horizontal: margins),
                     child: TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(hintText: "Kata Sandi"),
@@ -64,7 +65,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(
-                        vertical: 10, horizontal: marginHorizontal),
+                        vertical: 10, horizontal: margins),
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Text("LOGIN"),
@@ -80,7 +81,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: marginHorizontal),
+                    margin: EdgeInsets.symmetric(horizontal: margins),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -110,7 +111,6 @@ class LoginPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

@@ -1,6 +1,8 @@
+import 'package:bpjs/home.dart';
 import 'package:bpjs/login.dart';
 import 'package:flutter/material.dart';
 import 'comingsoon.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,66 +11,95 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "BPJS",
-      home: RegistrationPage(),
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (c) => MultiState(),
+        )
+      ],
+      child: MaterialApp(
+        title: "BPJS",
+        home: RegistrationPage(),
+    //     ( if (ms!.token != null)
+    //           HomePage()
+    // else
+    //     RegistrationPage()),
+        //MaterialPageRoute(builder: (context) => ms!.token != null ? HomePage() : LoginPage()),
+
+
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
 
+class MultiState extends ChangeNotifier {
+  String? token;
+
+  setToken(String value) {
+    this.token = value;
+    notifyListeners();
+  }
+}
+
 class RegistrationPage extends StatelessWidget {
+  MultiState? ms;
+
   @override
   Widget build(BuildContext context) {
+    ms = Provider.of<MultiState>(context);
     void _comingSoon(String _title) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ComingSoonPage(title: _title)));
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => ComingSoonPage(title: _title)),
+      );
     }
 
-    return Scaffold(
+    return ms!.token != null ? HomePage() :
+      Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-          child: Container(
-            width: 411,
-            child: ListView(
-              children: [
-                Image.asset('images/img_splash_header.jpeg'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomButton(
-                      text: "PENDAFTARAN PESERTA BARU",
-                      icon: "icons/icon_new_member.jpeg",
-                      click: () {
-                        _comingSoon("Peserta Baru");
-                      },
-                    ),
-                    CustomButton(
-                      text: "PENDAFTARAN PENGGUNA BARU",
-                      icon: "icons/icon_new_user.jpeg",
-                      click: () {
-                        _comingSoon("Pengguna Baru");
-                      },
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    child: Text("LOGIN"),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+        child: Container(
+          width: 411,
+          child: ListView(
+            children: [
+              Image.asset('images/img_splash_header.jpeg'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    text: "PENDAFTARAN PESERTA BARU",
+                    icon: "icons/icon_new_member.jpeg",
+                    click: () {
+                      _comingSoon("Peserta Baru");
                     },
                   ),
+                  CustomButton(
+                    text: "PENDAFTARAN PENGGUNA BARU",
+                    icon: "icons/icon_new_user.jpeg",
+                    click: () {
+                      _comingSoon("Pengguna Baru");
+                    },
+                  ),
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: Text("LOGIN"),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        // LoginPage()
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    //ms!.token != null ? HomePage() : LoginPage()),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 }

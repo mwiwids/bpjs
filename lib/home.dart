@@ -1,13 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'login.dart';
+import 'main.dart';
 
 class HomePage extends StatelessWidget {
+  MultiState? ms;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavBar(),
-      debugShowCheckedModeBanner: false,
+    ms = Provider.of<MultiState>(context);
+    return ChangeNotifierProvider(
+      create: (_) => KontenState(this.ms, context),
+      child: Consumer<KontenState>(
+        builder: (context, state, _) {
+          return BottomNavBar();
+        },
+      ),
     );
   }
 }
@@ -39,6 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ];
 
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
         title: Text(listTitle.elementAt(currentScreen)),
         centerTitle: true,
@@ -73,12 +84,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
 Widget profilScreen(BuildContext context) {
   return Container(
-    padding: EdgeInsets.all(10),
-    color: Colors.black12,
+    margin: EdgeInsets.all(10),
     child: ListView(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.all(5),
           color: Colors.white,
           child: SingleChildScrollView(
@@ -119,10 +128,9 @@ Widget profilScreen(BuildContext context) {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 5),
+          margin: EdgeInsets.only(top: 5),
           padding: EdgeInsets.all(10),
           color: Colors.white,
-          // width: double.infinity,
           height: 200,
           child: ListView(
             children: [
@@ -181,25 +189,36 @@ Widget profilScreen(BuildContext context) {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 5),
-          color: Colors.white,
+          margin: EdgeInsets.only(top: 5),
           width: double.infinity,
           height: 150,
           child: ListView(
             children: [
               OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
                 child: Text("Tentang Aplikasi"),
                 onPressed: () {
-                  print("Contoh outline button with Icon");
+                  print("Tentang Aplikasi");
                 },
               ),
               OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
                 child: Text("Syarat dan Ketentuan"),
                 onPressed: () {
-                  print("Contoh outline button with Icon");
+                  print("Syarat dan Ketentuan");
                 },
               ),
               OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
                 child: Text("Logout"),
                 onPressed: () {
                   Navigator.pop(context, false);
@@ -214,10 +233,12 @@ Widget profilScreen(BuildContext context) {
 }
 
 Widget kontakScreen() {
-  return SingleChildScrollView(
-    child: Center(
-      child: Container(
-        width: 411,
+  return Center(
+    child: Container(
+      height: double.infinity,
+      width: 411,
+      color: Colors.white,
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -287,17 +308,22 @@ Widget _gridItem(String judulBerita) {
     child: Row(
       children: [
         Flexible(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset("images/img_no_image.png"),
-        )),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset("images/img_no_image.png"),
+          ),
+        ),
         Flexible(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(judulBerita),
+                child: Text(
+                  judulBerita,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -329,9 +355,7 @@ Widget beritaScreen() {
       child: GridView.builder(
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 2/1
-        ),
+            crossAxisCount: 1, childAspectRatio: 411 / 144),
         itemBuilder: (buildContext, index) {
           return _gridItem(listJudulBerita[index]);
         },
@@ -369,6 +393,7 @@ Widget layananScreen() {
   return Center(
     child: Container(
       width: 411,
+      color: Colors.white,
       child: ListView(
         children: [
           Container(

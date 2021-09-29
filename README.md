@@ -6,7 +6,7 @@ Tugas harus memenuhi :
 1. Open API, minimal API get Data -> HTTP/Dio
 2. Navigation Buttom/Tabbar/Drawer (minimal 3 sub) - OK
 3. List View/Grid View - OK
-4. Dialog - Meet 5 Materi 1 - Diletakkan di logout
+4. Dialog - OK - di logout
 5. Form/Login - OK
 6. Persistance - Meet 7 Materi 3
 7. HTTP/Dio - Meet 7 Materi 2

@@ -1,8 +1,8 @@
-import 'dart:ui';
+import 'package:bpjs/comingsoon.dart';
+import 'package:bpjs/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'comingsoon.dart';
-import 'main.dart';
+
 
 class LoginPage extends StatelessWidget {
   MultiState? ms;

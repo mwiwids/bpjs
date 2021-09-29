@@ -82,9 +82,7 @@ class RegistrationPage extends StatelessWidget {
                   child: Text("LOGIN"),
                   onPressed: () {
                     Navigator.of(context).push(
-                        // LoginPage()
                       MaterialPageRoute(builder: (context) => LoginPage()),
-                    //ms!.token != null ? HomePage() : LoginPage()),
                     );
                   },
                 ),

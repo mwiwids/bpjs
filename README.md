@@ -3,15 +3,15 @@
 A BPJS project for Final Project SFA.
 
 Tugas harus memenuhi :
-1. Open API, minimal API get Data
+1. Open API, minimal API get Data -> HTTP/Dio
 2. Navigation Buttom/Tabbar/Drawer (minimal 3 sub) - OK
 3. List View/Grid View - OK
-4. Dialog
+4. Dialog - Meet 5 Materi 1
 5. Form/Login - OK
-6. Persistance
-7. HTTP/Dio
-8. Navigation
-9. Optional : Image Pick, Provider, Route
+6. Persistance - Meet 7 Materi 3
+7. HTTP/Dio - Meet 7 Materi 2
+8. Navigation - Meet 6 Materi 1
+9. Optional : Image Pick, Provider, Route - OK (Provider) 
 
 ## Getting Started
 

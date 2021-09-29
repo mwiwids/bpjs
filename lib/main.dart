@@ -20,13 +20,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "BPJS",
         home: RegistrationPage(),
-    //     ( if (ms!.token != null)
-    //           HomePage()
-    // else
-    //     RegistrationPage()),
-        //MaterialPageRoute(builder: (context) => ms!.token != null ? HomePage() : LoginPage()),
-
-
         debugShowCheckedModeBanner: false,
       ),
     );
@@ -54,7 +47,7 @@ class RegistrationPage extends StatelessWidget {
       );
     }
 
-    return ms!.token != null ? HomePage() :
+    return ms!.token?.isNotEmpty??false ? HomePage() :
       Scaffold(
       backgroundColor: Colors.white,
       body: Center(

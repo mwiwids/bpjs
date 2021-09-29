@@ -221,7 +221,12 @@ Widget profilScreen(BuildContext context) {
                 ),
                 child: Text("Logout"),
                 onPressed: () {
-                  Navigator.pop(context, false);
+                  final ms = Provider.of<MultiState>(context, listen: false);
+                  ms.setToken("");
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegistrationPage()),
+                      (route) => false);
                 },
               ),
             ],

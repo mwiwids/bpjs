@@ -10,7 +10,7 @@ Tugas harus memenuhi :
 5. Form/Login - OK
 6. Persistance - Meet 7 Materi 3
 7. HTTP/Dio - Meet 7 Materi 2
-8. Navigation - Meet 6 Materi 1
+8. Navigation - OK
 9. Optional : Image Pick, Provider, Route - OK (Provider) 
 
 ## Getting Started

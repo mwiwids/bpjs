@@ -1,8 +1,7 @@
 import 'package:bpjs/comingsoon.dart';
-import 'package:bpjs/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'controller/state.dart';
 
 class LoginPage extends StatelessWidget {
   MultiState? ms;
@@ -69,7 +68,10 @@ class LoginPage extends StatelessWidget {
                         decoration: InputDecoration(hintText: "Kata Sandi"),
                       ),
                     ),
-                    if (state.warning != null) Text("${state.warning}"),
+                    if (state.warning != null)
+                      Center(
+                        child: Text("${state.warning}"),
+                      ),
                     Container(
                       margin: EdgeInsets.symmetric(
                           vertical: 10, horizontal: margins),
@@ -115,53 +117,6 @@ class LoginPage extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class KontenState extends ChangeNotifier {
-  MultiState? ms;
-  TextEditingController uname = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
-  List<String> data = [];
-  String? warning;
-  BuildContext context;
-
-  KontenState(this.ms, this.context) {
-    if (this.ms!.token != null) {
-      getData();
-    }
-    print("$data");
-  }
-
-  getData() {
-    if (data.length > 0) data.clear();
-    this.data.add("Alex");
-    this.data.add("alex@gmail.com");
-    notifyListeners();
-  }
-
-  getDetailData() {
-    print(this.warning);
-    if (data.length > 0) data.clear();
-    this.data.add("Alex");
-    this.data.add("alex@gmail.com");
-    this.data.add("27");
-    this.data.add("Jl. Panglima Sudirman");
-    this.data.add("Pria");
-    notifyListeners();
-  }
-
-  prosesLogin() {
-
-    if (uname.text != "alex") {
-      this.warning = "Username salah";
-    } else if (pass.text != "123") {
-      this.warning = "Password salah";
-    } else {
-      ms!.setToken("123456789");
-      Navigator.pop(context);
-    }
-    notifyListeners();
   }
 }
 

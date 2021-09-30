@@ -2,28 +2,14 @@ import 'package:bpjs/homescreen/berita.dart';
 import 'package:bpjs/homescreen/kontak.dart';
 import 'package:bpjs/homescreen/layanan.dart';
 import 'package:bpjs/homescreen/notifikasi.dart';
-import 'package:bpjs/login.dart';
-import 'package:bpjs/main.dart';
+import 'package:bpjs/homescreen/profil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'homescreen/profil.dart';
 
 class HomePage extends StatelessWidget {
-  MultiState? ms;
-
   @override
   Widget build(BuildContext context) {
-    ms = Provider.of<MultiState>(context);
-    return ChangeNotifierProvider(
-      create: (_) => KontenState(this.ms, context),
-      child: Consumer<KontenState>(
-        builder: (context, state, _) {
-          return BottomNavBar();
-        },
-      ),
-    );
+    return BottomNavBar();
   }
 }
 
@@ -50,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       notifikasiScreen(),
       beritaScreen(),
       kontakScreen(),
-      profilScreen(context),
+      ProfilScreen(),
     ];
 
     return Scaffold(
@@ -86,5 +72,3 @@ class _BottomNavBarState extends State<BottomNavBar> {
     );
   }
 }
-
-

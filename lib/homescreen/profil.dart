@@ -160,6 +160,8 @@ class ProfilScreen extends StatelessWidget {
 }
 
 Widget alertDialogModifikasi(BuildContext context) {
+  MultiState? ms;
+
   return AlertDialog(
     content: Container(
       child: Text("Apakah anda yakin ingin logout?"),
@@ -172,8 +174,8 @@ Widget alertDialogModifikasi(BuildContext context) {
         ),
         child: Text("Ya"),
         onPressed: () {
-          final ms = Provider.of<MultiState>(context, listen: false);
-          ms.setToken("");
+          ms = Provider.of<MultiState>(context, listen: false);
+          ms?.setToken("");
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => Navigation()),

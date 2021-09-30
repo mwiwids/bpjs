@@ -1,61 +1,71 @@
+import 'dart:convert';
+
 import 'package:bpjs/controller/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:bpjs/model/mlogin.dart';
+import 'package:bpjs/model/mlogindata.dart';
 
 class MultiState extends ChangeNotifier {
   String? token;
 
-  setToken(String value) {
+  setToken(String? value) {
     this.token = value;
+    print('TOKEN : ${value}');
     notifyListeners();
   }
 }
 
-class KontenState extends ChangeNotifier {
+class LoginState extends ChangeNotifier {
   MultiState? ms;
   TextEditingController uname = new TextEditingController();
   TextEditingController pass = new TextEditingController();
-  List<String> data = [];
+  final formKey = GlobalKey<FormState>();
   String? warning;
-  BuildContext context;
+  MLoginData? data;
+  bool? muncul = false;
 
-  KontenState(this.ms, this.context) {
-    if (this.ms!.token != null) {
-      // getData();
-    }
-    // print("$data");
-  }
-
-  // getData() {
-  //   if (data.length > 0) data.clear();
-  //   this.data.add("Alex");
-  //   this.data.add("alex@gmail.com");
-  //   notifyListeners();
-  // }
-
-  // getDetailData() {
-  //   print(this.warning);
-  //   if (data.length > 0) data.clear();
-  //   this.data.add("Alex");
-  //   this.data.add("alex@gmail.com");
-  //   this.data.add("27");
-  //   this.data.add("Jl. Panglima Sudirman");
-  //   this.data.add("Pria");
-  //   notifyListeners();
-  // }
-
-  prosesLogin() {
-    if (uname.text != "admin") {
-      this.warning = "Username salah";
-    } else if (pass.text != "123") {
-      this.warning = "Password salah";
-    } else {
-      ms!.setToken("123456789");
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => Navigation()),
-          (route) => false);
-    }
+  prosesLogin(BuildContext context, MultiState? mss) {
+    this.ms = mss;
+    this.muncul = false;
+    this.warning = "";
+    this.data = null;
     notifyListeners();
+    Uri url = Uri.parse("https://sfa.forcapos.xyz/api/account/login");
+    var header;
+    var body = {
+      "m_akun_namapengguna": uname.text,
+      "m_akun_password": pass.text
+    };
+    http.post(url, headers: header, body: body).then((value) {
+      print(value.body);
+      try {
+        if (value.body.isNotEmpty) {
+          var json = jsonDecode(value.body);
+          MLogin dataStatus = MLogin.fromJson(json);
+          if (dataStatus.status!.toUpperCase() == "OK") {
+            if (dataStatus.data!.length > 0) {
+              data = dataStatus.data!.first;
+              this.muncul = true;
+              ms!.setToken(data!.mToken);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Navigation()),
+                  (route) => false);
+            } else {
+              this.warning = "Data kosong";
+            }
+          } else {
+            this.warning = dataStatus.message;
+          }
+        } else {
+          this.warning = "Data tidak ada";
+        }
+      } catch (e) {
+        this.warning = "${e.toString()} Ups.. Sepertinya ada masalah";
+      }
+      notifyListeners();
+    });
   }
-
 }

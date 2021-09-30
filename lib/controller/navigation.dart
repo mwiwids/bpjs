@@ -1,10 +1,10 @@
 import 'package:bpjs/comingsoon.dart';
+import 'package:bpjs/controller/state.dart';
 import 'package:bpjs/home.dart';
 import 'package:bpjs/login.dart';
 import 'package:bpjs/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'state.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);

@@ -40,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text(listTitle.elementAt(currentScreen)),
         centerTitle: true,

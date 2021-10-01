@@ -28,19 +28,19 @@ Widget layananScreen() {
                       Flexible(
                         child: Padding(
                           padding: EdgeInsets.all(headerSpace),
-                          child: Image.asset('icons/icon_saldo.PNG'),
+                          child: Image.asset('assets/icons/icon_saldo.PNG'),
                         ),
                       ),
                       Flexible(
                         child: Padding(
                           padding: EdgeInsets.all(headerSpace),
-                          child: Image.asset('icons/icon_simulation.PNG'),
+                          child: Image.asset('assets/icons/icon_simulation.PNG'),
                         ),
                       ),
                       Flexible(
                         child: Padding(
                           padding: EdgeInsets.all(headerSpace),
-                          child: Image.asset('icons/icon_queue.PNG'),
+                          child: Image.asset('assets/icons/icon_queue.PNG'),
                         ),
                       ),
                     ],
@@ -59,12 +59,12 @@ Widget layananScreen() {
                 mainAxisSpacing: space,
                 crossAxisSpacing: space,
                 children: [
-                  customButton("KARTU DIGITAL", "icons/icon_card.PNG"),
-                  customButton("KECELAKAAN KERJA", "icons/icon_report.PNG"),
-                  customButton("INFO PROGRAM", "icons/icon_info.PNG"),
-                  customButton("MITRA LAYANAN", "icons/icon_partner.PNG"),
-                  customButton("KANTOR CABANG", "icons/icon_branch.PNG"),
-                  customButton("PENGADUAN", "icons/icon_complaint.PNG"),
+                  customButton("KARTU DIGITAL", "assets/icons/icon_card.PNG"),
+                  customButton("KECELAKAAN KERJA", "assets/icons/icon_report.PNG"),
+                  customButton("INFO PROGRAM", "assets/icons/icon_info.PNG"),
+                  customButton("MITRA LAYANAN", "assets/icons/icon_partner.PNG"),
+                  customButton("KANTOR CABANG", "assets/icons/icon_branch.PNG"),
+                  customButton("PENGADUAN", "assets/icons/icon_complaint.PNG"),
                 ],
               ),
             ),

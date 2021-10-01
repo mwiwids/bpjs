@@ -19,7 +19,7 @@ Widget kontakScreen() {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Image.asset(
-                "images/img_ask_bpjs.PNG",
+                "assets/images/img_ask_bpjs.PNG",
                 width: 100,
                 height: 100,
               ),
@@ -28,7 +28,7 @@ Widget kontakScreen() {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "icons/icon_whatsapp.PNG",
+                  "assets/icons/icon_whatsapp.PNG",
                   width: 32,
                   height: 32,
                 ),
@@ -57,7 +57,7 @@ Widget kontakScreen() {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-              child: Image.asset("images/img_customer_care.PNG"),
+              child: Image.asset("assets/images/img_customer_care.PNG"),
             )
           ],
         ),

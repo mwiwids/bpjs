@@ -25,7 +25,7 @@ class ProfilScreen extends StatelessWidget {
                     margin: EdgeInsets.all(8.0),
                     child: CircleAvatar(
                       radius: 45.0,
-                      backgroundImage: AssetImage("images/img_avatar.jpeg"),
+                      backgroundImage: AssetImage("assets/images/img_avatar.jpeg"),
                       backgroundColor: Colors.transparent,
                     ),
                   ),

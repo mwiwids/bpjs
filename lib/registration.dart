@@ -10,13 +10,13 @@ class RegistrationPage extends StatelessWidget {
           width: 411,
           child: ListView(
             children: [
-              Image.asset('images/img_splash_header.jpeg'),
+              Image.asset('assets/images/img_splash_header.jpeg'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomButton(
                     text: "PENDAFTARAN PESERTA BARU",
-                    icon: "icons/icon_new_member.jpeg",
+                    icon: "assets/icons/icon_new_member.jpeg",
                     click: () {
                       Navigator.pushNamed(
                         context,
@@ -27,7 +27,7 @@ class RegistrationPage extends StatelessWidget {
                   ),
                   CustomButton(
                     text: "PENDAFTARAN PENGGUNA BARU",
-                    icon: "icons/icon_new_user.jpeg",
+                    icon: "assets/icons/icon_new_user.jpeg",
                     click: () {
                       Navigator.pushNamed(
                         context,

@@ -12,7 +12,7 @@ Widget _gridItem(String judulBerita) {
         Flexible(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset("images/img_no_image.png"),
+            child: Image.asset("assets/images/img_no_image.png"),
           ),
         ),
         Flexible(

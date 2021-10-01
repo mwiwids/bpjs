@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
                           children: [
                             Container(
                               child:
-                                  Image.asset('images/img_splash_header.jpeg'),
+                                  Image.asset('assets/images/img_splash_header.jpeg'),
                             ),
                             Positioned(
                               left: 0,

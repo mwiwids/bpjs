@@ -1,11 +1,15 @@
+import 'package:bpjs/comingsoon.dart';
 import 'package:bpjs/controller/navigation.dart';
 import 'package:bpjs/controller/state.dart';
+import 'package:bpjs/pengaturan.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class ProfilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    GetStorage pref = GetStorage();
     return Container(
       margin: EdgeInsets.all(10),
       child: ListView(
@@ -31,17 +35,24 @@ class ProfilScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Soekarno",
+                          "${pref.read("nama")}",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                         Text(
-                          "admin@soekarno.id",
+                          "${pref.read("email")}",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                         Container(
                           child: ElevatedButton(
                             child: Text("Pengaturan"),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Pengaturan(),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -72,7 +83,7 @@ class ProfilScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
-                    "Soekarno",
+                    "${pref.read("nama")}",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -83,7 +94,7 @@ class ProfilScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
-                    "3526010000000000",
+                    "${pref.read("noKTP")}",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -94,7 +105,7 @@ class ProfilScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
-                    "Surabaya, 06 Juni 1901",
+                    "${pref.read("tglLahir")}",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -105,7 +116,7 @@ class ProfilScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
-                    "Surabaya",
+                    "${pref.read("alamat")}",
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -125,7 +136,13 @@ class ProfilScreen extends StatelessWidget {
                   ),
                   child: Text("Tentang Aplikasi"),
                   onPressed: () {
-                    print("Tentang Aplikasi");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ComingSoonPage(title: "Tentang Aplikasi"),
+                      ),
+                    );
                   },
                 ),
                 OutlinedButton(
@@ -135,7 +152,13 @@ class ProfilScreen extends StatelessWidget {
                   ),
                   child: Text("Syarat dan Ketentuan"),
                   onPressed: () {
-                    print("Syarat dan Ketentuan");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ComingSoonPage(title: "Syarat dan Ketentuan"),
+                      ),
+                    );
                   },
                 ),
                 OutlinedButton(

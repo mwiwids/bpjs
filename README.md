@@ -8,8 +8,8 @@ Tugas harus memenuhi :
 3. List View/Grid View - OK
 4. Dialog - OK - di logout
 5. Form/Login - OK
-6. Persistance - Meet 7 Materi 3
-7. HTTP/Dio - Meet 7 Materi 2
+6. Persistance - OK
+7. HTTP/Dio - OK
 8. Navigation - OK
 9. Optional : Image Pick, Provider, Route - OK (Provider) 
 
